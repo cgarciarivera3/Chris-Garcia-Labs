@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bvvh6x5tbl0m1"]
+
+[ext_resource type="Texture2D" uid="uid://cvwauij4rylco" path="res://pika.png" id="2_f0304"]
+[ext_resource type="Texture2D" uid="uid://bhoupy7lilbw0" path="res://rowletplush.png" id="2_npsir"]
+[ext_resource type="PackedScene" uid="uid://b37lov4kjxi6o" path="res://tree.tscn" id="3_nqe6p"]
+
+[node name="Node2D" type="Node2D" unique_id=171120792]
+
+[node name="Pika" type="Sprite2D" parent="." unique_id=1353927747]
+position = Vector2(185, 565)
+scale = Vector2(0.38443398, 0.38443395)
+texture = ExtResource("2_f0304")
+
+[node name="Rowletplush" type="Sprite2D" parent="." unique_id=2145664509]
+position = Vector2(263, 244)
+scale = Vector2(0.2009091, 0.2009091)
+texture = ExtResource("2_npsir")
+
+[node name="Tree" parent="." unique_id=1430572102 instance=ExtResource("3_nqe6p")]
+position = Vector2(944, 356)
+
+[node name="Tree2" parent="." unique_id=449535174 instance=ExtResource("3_nqe6p")]
+position = Vector2(725, 356)
+
+[node name="Tree3" parent="." unique_id=1753028679 instance=ExtResource("3_nqe6p")]
+position = Vector2(517, 356)
+
+[node name="Tree4" parent="." unique_id=513469698 instance=ExtResource("3_nqe6p")]
+position = Vector2(319, 358)
