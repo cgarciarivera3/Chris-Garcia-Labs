@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://c70l3dcopch2s"]
+
+[ext_resource type="Script" uid="uid://dvuce6pdadlfg" path="res://character_body_3d.gd" id="1_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://cok6iamhw5eaq" path="res://icon.svg" id="2_h2yge"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
+radius = 0.8779297
+
+[node name="Main" type="Node" unique_id=1364016996]
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=133159592]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=955120]
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1417372833]
+mesh = SubResource("BoxMesh_ig7tw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2127555016]
+transform = Transform3D(1, 0, 0, 0, 0.7007972, 0.71336055, 0, -0.71336055, 0.7007972, 0, 12.0610485, 0)
+shadow_enabled = true
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=1020625299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.223938, 0)
+script = ExtResource("1_0xm2m")
+
+[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D" unique_id=794360227]
+texture = ExtResource("2_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=427414608]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1518871945]
+shape = SubResource("CapsuleShape3D_0xm2m")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=118158927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.831604, 2.0039673, 0)
+size = Vector3(4.913574, 3.5421143, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="." unique_id=787918922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.746155, 2.0039673, 0)
+size = Vector3(4.913574, 3.5421143, 1)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="." unique_id=1182182713]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.041809082, 2.0039673, -13.219116)
+size = Vector3(4.913574, 3.5421143, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="." unique_id=504160009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.231567, 2.0039673, -14.091797)
+size = Vector3(4.913574, 3.5421143, 1)
