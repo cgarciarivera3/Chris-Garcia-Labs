@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://8hk8qrwgse3e"]
+
+[ext_resource type="Script" uid="uid://35m776umbhup" path="res://Assets/Scripts/audiostream_.gd" id="1_8voko"]
+
+[node name="Audiostream" type="AudioStreamPlayer" unique_id=203601727]
+script = ExtResource("1_8voko")

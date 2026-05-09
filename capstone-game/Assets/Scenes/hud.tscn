@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://6eupop06dw48"]
+
+[ext_resource type="FontFile" uid="uid://dqaqe6c68x885" path="res://Assets/Fonts/Kenney Pixel.ttf" id="1_71ymp"]
+[ext_resource type="Script" uid="uid://q157wl58wle5" path="res://Assets/Scripts/hud.gd" id="1_th0pt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_th0pt"]
+font = ExtResource("1_71ymp")
+font_size = 64
+
+[node name="HUD" type="Control" unique_id=1018476176 node_paths=PackedStringArray("stopwatch_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_th0pt")
+stopwatch_label = NodePath("StopwatchLabel")
+
+[node name="StopwatchLabel" type="Label" parent="." unique_id=514902611]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 137.0
+offset_bottom = 59.0
+grow_horizontal = 2
+text = "00:00:000"
+label_settings = SubResource("LabelSettings_th0pt")
+vertical_alignment = 1

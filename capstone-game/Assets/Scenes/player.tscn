@@ -1,27 +1,167 @@
 [gd_scene format=3 uid="uid://dwkifk4w3khct"]
 
 [ext_resource type="Script" uid="uid://cbud2kf1eigex" path="res://Assets/Scripts/player.gd" id="1_ij6vw"]
+[ext_resource type="Script" uid="uid://d3mdpy0hidxyr" path="res://Assets/Scripts/player_animator.gd" id="2_38rej"]
 [ext_resource type="Texture2D" uid="uid://1hm0hafkro1g" path="res://Assets/Sprites/SPRITE_SHEET.png" id="2_bbddn"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74q7y"]
-radius = 4.0
-height = 16.0
+[sub_resource type="Animation" id="Animation_7dd06"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 8, 24, 24)]
+}
 
-[node name="Player" type="CharacterBody2D" unique_id=121645171]
+[sub_resource type="Animation" id="Animation_c3tg1"]
+resource_name = "Dash"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.39999998, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 264, 24, 24), Rect2(32, 264, 24, 24), Rect2(64, 264, 24, 24), Rect2(96, 264, 24, 24), Rect2(128, 264, 24, 24), Rect2(160, 264, 24, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_lerqx"]
+resource_name = "death"
+length = 2.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 200, 24, 24), Rect2(32, 200, 24, 24), Rect2(64, 200, 24, 24), Rect2(96, 200, 24, 24), Rect2(128, 200, 24, 24), Rect2(160, 200, 24, 24), Rect2(192, 200, 24, 24), Rect2(224, 200, 24, 24), Rect2(256, 200, 24, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_t1xgp"]
+resource_name = "Fall"
+loop_mode = 1
+step = 0.166
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333334, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 163, 24, 24), Rect2(32, 163, 24, 24), Rect2(64, 163, 24, 24), Rect2(96, 163, 24, 24), Rect2(128, 163, 24, 24), Rect2(160, 163, 24, 24), Rect2(0, 163, 24, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_38rej"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667, 1, 1.3333334, 1.6666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 8, 24, 24), Rect2(32, 8, 24, 24), Rect2(64, 8, 24, 24), Rect2(96, 8, 24, 24), Rect2(128, 8, 24, 24), Rect2(160, 8, 24, 24), Rect2(0, 8, 24, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_23lac"]
+resource_name = "Jump"
+loop_mode = 1
+step = 0.166
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667, 0.8333333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 134, 24, 24), Rect2(32, 134, 24, 24), Rect2(64, 134, 24, 24), Rect2(96, 134, 24, 24), Rect2(128, 134, 24, 24), Rect2(160, 134, 24, 24), Rect2(0, 134, 24, 24)]
+}
+
+[sub_resource type="Animation" id="Animation_w3t24"]
+resource_name = "run"
+length = 2.0
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerAnimator/Sprite2D:region_rect")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Rect2(0, 40, 24, 24), Rect2(32, 40, 24, 24), Rect2(64, 40, 24, 24), Rect2(96, 40, 24, 24), Rect2(128, 40, 24, 24), Rect2(160, 40, 24, 24), Rect2(192, 40, 24, 24), Rect2(224, 40, 24, 24), Rect2(0, 40, 24, 24)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t1xgp"]
+_data = {
+&"RESET": SubResource("Animation_7dd06"),
+&"dash": SubResource("Animation_c3tg1"),
+&"death": SubResource("Animation_lerqx"),
+&"fall": SubResource("Animation_t1xgp"),
+&"idle": SubResource("Animation_38rej"),
+&"jump": SubResource("Animation_23lac"),
+&"run": SubResource("Animation_w3t24")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74q7y"]
+radius = 7.0
+height = 14.0
+
+[node name="Player" type="CharacterBody2D" unique_id=121645171 node_paths=PackedStringArray("animation_player")]
+collision_mask = 3
 script = ExtResource("1_ij6vw")
+animation_player = NodePath("PlayerAnimator/AnimationPlayer")
 speed = 5.0
 
-[node name="Animator" type="Node2D" parent="." unique_id=946904796]
+[node name="PlayerAnimator" type="Node2D" parent="." unique_id=946904796 node_paths=PackedStringArray("player_controller", "animation_player", "sprite")]
+script = ExtResource("2_38rej")
+player_controller = NodePath("..")
+animation_player = NodePath("AnimationPlayer")
+sprite = NodePath("Sprite2D")
 
-[node name="Sprite2D" type="Sprite2D" parent="Animator" unique_id=1907662684]
-position = Vector2(-6, -7)
+[node name="Sprite2D" type="Sprite2D" parent="PlayerAnimator" unique_id=1907662684]
+position = Vector2(0, -7)
 texture = ExtResource("2_bbddn")
 region_enabled = true
 region_rect = Rect2(0, 8, 24, 24)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Animator" unique_id=1876552163]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimator" unique_id=1876552163]
 root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_t1xgp")
+autoplay = &"idle"
+speed_scale = 2.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=146173993]
-position = Vector2(0, -8)
+position = Vector2(3, -7)
 shape = SubResource("CapsuleShape2D_74q7y")
